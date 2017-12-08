@@ -1,4 +1,4 @@
-package ucl.cs.templatemethod;
+package ucl.cs.strategy;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -7,25 +7,24 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import ucl.cs.matchers.IterableBeginsWith;
-import ucl.cs.strategy.NumberSequence;
 
-public class FibonacciSequenceTest {
+public class FibonacciTermGeneratorTest {
 
-  final ucl.cs.templatemethod.NumberSequence sequence = new FibonacciSequence();
+  final TermGenerator termGen = new FibonacciTermGenerator();
 
   @Test
   public void definesFirstTwoTermsToBeOne() {
 
-    assertThat(sequence.term(0), is(1));
-    assertThat(sequence.term(1), is(1));
+    assertThat(termGen.positiveTerm(0), is(1));
+    assertThat(termGen.positiveTerm(1), is(1));
   }
 
   @Test
   public void definesSubsequentTermsToBeTheSumOfThePreviousTwo() {
 
-    assertThat(sequence.term(2), is(2));
-    assertThat(sequence.term(3), is(3));
-    assertThat(sequence.term(4), is(5));
+    assertThat(termGen.positiveTerm(2), is(2));
+    assertThat(termGen.positiveTerm(3), is(3));
+    assertThat(termGen.positiveTerm(4), is(5));
   }
 
 

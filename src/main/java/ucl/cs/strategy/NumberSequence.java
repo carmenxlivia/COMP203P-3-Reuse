@@ -2,16 +2,24 @@ package ucl.cs.strategy;
 
 import java.util.Iterator;
 
-public class FibonacciSequence implements Iterable<Integer> {
+public class NumberSequence implements Iterable<Integer> {
+
+  private final TermGenerator termGenerator;
+
+  public NumberSequence(TermGenerator termGenerator) {
+    this.termGenerator =termGenerator;
+  }
+
+
 
   public int term(int i) {
     if (i < 0) {
       throw new IllegalArgumentException("Not defined for indices < 0");
     }
-    if (i < 2) {
+    if (i < 1) {
       return 1;
     }
-    return term(i - 1) + term(i - 2);
+    return termGenerator.positiveTerm(i);
   }
 
   public Iterator<Integer> iterator() {
